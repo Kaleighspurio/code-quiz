@@ -13,20 +13,20 @@
         <a href="highscores.html" class="high-scores">View highscores</a>
         <p class="timer">Time left: <span class="time-remaining"></span></p>
     </header> 
-    <main class="container">
+    <main class="container instructions-panel" style="display: contents;">
         <div class="row">
             <aside class="col-2"></aside>
             <div class="col-8 main">
                 <p class="questions">Press the button to start the timer and begin the quiz.  Each wrong answer will take away 20 seconds from the remaining time.</p>
-                <button type="button" class="btn btn-info btn-block">Start</button>
+                <button type="button" class="btn btn-info btn-block start-button">Start</button>
             </div>
             <aside class="col-2"></aside>
         </div>
         
     </main>
 
-
-    <main class="container">
+<!-- display none will keep it from displaying on the page -->
+    <main class="container question-one" style="display: none;">
         <div class="row">
             <aside class="col-2"></aside>
             <div class="col-8 main">
@@ -40,7 +40,38 @@
             </div>
             <aside class="col-2"></aside>
         </div>
-        
+    </main>
+
+    <main class="container" style="display: none;">
+        <div class="row">
+            <aside class="col-2"></aside>
+            <div class="col-8 main">
+                <p class="questions">What will the question be?</p>
+                <div class=btn-group-vertical>
+                    <button type="button" class="btn btn-info option1">Option 1</button>
+                    <button type="button" class="btn btn-info option2">Option 2</button>
+                    <button type="button" class="btn btn-info option3">Option 3</button>
+                    <button type="button" class="btn btn-info option4">Option 4</button>
+                </div>
+            </div>
+            <aside class="col-2"></aside>
+        </div>
+    </main>
+
+    <main class="container" style="display: none;">
+        <div class="row">
+            <aside class="col-2"></aside>
+            <div class="col-8 main">
+                <p class="questions">What will the question be?</p>
+                <div class=btn-group-vertical>
+                    <button type="button" class="btn btn-info option1">Option 1</button>
+                    <button type="button" class="btn btn-info option2">Option 2</button>
+                    <button type="button" class="btn btn-info option3">Option 3</button>
+                    <button type="button" class="btn btn-info option4">Option 4</button>
+                </div>
+            </div>
+            <aside class="col-2"></aside>
+        </div>
     </main>
 
 
