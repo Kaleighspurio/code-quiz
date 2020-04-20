@@ -1,0 +1,26 @@
+body {
+    padding: 10px;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    border-bottom: 2px ridge black;
+}
+
+.high-scores {
+    float: left;
+}
+
+.timer {
+    float: right;
+}
+
+.container {
+    justify-content: center;
+    clear: both;
+}
+
+.main {
+    border: dashed 1px black;
+}
