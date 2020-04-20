@@ -23,4 +23,9 @@ h1 {
 
 .main {
     border: dashed 1px black;
+    margin-top: 50px;
+}
+
+.btn {
+    margin: 4px;
 }
