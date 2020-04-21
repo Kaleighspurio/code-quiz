@@ -11,7 +11,7 @@
     <header>
         <h1>Quiz</h1>
         <a href="highscores.html" class="high-scores">View highscores</a>
-        <p class="timer">Time left: <span class="time-remaining"></span></p>
+        <p class="timer">Time left: <span class="time-remaining">60</span></p>
     </header> 
     <main class="container instructions-panel" style="display: contents;">
         <div class="row">
@@ -30,39 +30,40 @@
         <div class="row">
             <aside class="col-2"></aside>
             <div class="col-8 main">
-                <p class="questions">What will the question be?</p>
+                <p class="questions">Is this the first question?</p>
                 <div class=btn-group-vertical>
-                    <button type="button" class="btn btn-info option1">Option 1</button>
-                    <button type="button" class="btn btn-info option2">Option 2</button>
-                    <button type="button" class="btn btn-info option3">Option 3</button>
-                    <button type="button" class="btn btn-info option4">Option 4</button>
+                    <button type="button" class="btn btn-info option1 correct-answer">Yes it is!</button>
+                    <button type="button" class="btn btn-info option2 wrong1">No way!</button>
+                    <button type="button" class="btn btn-info option3 wrong2">This is the 3rd question</button>
+                    <button type="button" class="btn btn-info option4 wrong3">this is the second question</button>
+                </div>
+                <p><span class="right-or-wrong"></span></p>
+            </div>
+            <aside class="col-2"></aside>
+        </div>
+    </main>
+
+    <main class="container question-two" style="display: none;">
+        <div class="row">
+            <aside class="col-2"></aside>
+            <div class="col-8 main">
+                <p class="questions">What will the second question be?</p>
+                <div class=btn-group-vertical>
+                    <button type="button" class="btn btn-info option1 wrong1">Option 1</button>
+                    <button type="button" class="btn btn-info option2 wrong2">Option 2</button>
+                    <button type="button" class="btn btn-info option3 correct-answer-2">Option 3</button>
+                    <button type="button" class="btn btn-info option4 wrong3">Option 4</button>
                 </div>
             </div>
             <aside class="col-2"></aside>
         </div>
     </main>
 
-    <main class="container" style="display: none;">
+    <main class="container question-three" style="display: none;">
         <div class="row">
             <aside class="col-2"></aside>
             <div class="col-8 main">
-                <p class="questions">What will the question be?</p>
-                <div class=btn-group-vertical>
-                    <button type="button" class="btn btn-info option1">Option 1</button>
-                    <button type="button" class="btn btn-info option2">Option 2</button>
-                    <button type="button" class="btn btn-info option3">Option 3</button>
-                    <button type="button" class="btn btn-info option4">Option 4</button>
-                </div>
-            </div>
-            <aside class="col-2"></aside>
-        </div>
-    </main>
-
-    <main class="container" style="display: none;">
-        <div class="row">
-            <aside class="col-2"></aside>
-            <div class="col-8 main">
-                <p class="questions">What will the question be?</p>
+                <p class="questions">What will the third question be?</p>
                 <div class=btn-group-vertical>
                     <button type="button" class="btn btn-info option1">Option 1</button>
                     <button type="button" class="btn btn-info option2">Option 2</button>
