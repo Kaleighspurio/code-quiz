@@ -60,6 +60,18 @@ var questionArray = [
 ];
 
 
+// Function for incorrect guesses to deduct seconds and display "Wrong!"
+function wrongAnswer() {
+    // subtract time from the timer
+
+    // This subtract 20 doesn't work!!!! FIX MEEEEE
+            // var secondsLeft = document.querySelector(".time-remaining");
+    // secondsLeft - 20;
+    // timer.textContent = secondsLeft;
+    answerFeedback.textContent = "Wrong!";
+}
+
+
 startButton.addEventListener("click", function(){
     // start the timer
     var secondsLeft = 60
@@ -84,46 +96,23 @@ startButton.addEventListener("click", function(){
     
     questionArray.forEach(function(question){
         $(".questions-display").text(question.question);
-        $("#button1").html(question.a);
-        $(".option2").html(question.b);
-        $(".option3").html(question.c);
-        $(".option4").html(question.d);
+        $(".option1").text(question.a);
+        $(".option2").text(question.b);
+        $(".option3").text(question.c);
+        $(".option4").text(question.d);
+        var correctAnswer = question.correct;
+        console.log(correctAnswer);
+        $("buttons").on("click", function(){
+            alert("button clicked")
+        })
+        $(".buttons").on("click", function(){
+//             if () {
+// // if what they clicked = correctAnswer, then continue to the next question...
+//             } else {
+//                 wrongAnswer();
+//             }
+        });
+       
     });
 });
 
-
-
-
-// Function for incorrect guesses to deduct seconds and display "Wrong!"
-function wrongAnswer() {
-    // subtract time from the timer
-
-    // This subtract 20 doesn't work!!!! FIX MEEEEE
-            // var secondsLeft = document.querySelector(".time-remaining");
-    // secondsLeft - 20;
-    // timer.textContent = secondsLeft;
-    answerFeedback.textContent = "Wrong!";
-}
-
-
-// wrongOne.addEventListener("click", function(){
-//     wrongAnswer();
-// });
-// wrongTwo.addEventListener("click", function(){
-//     wrongAnswer();
-// });
-// wrongThree.addEventListener("click", function(){
-//     wrongAnswer();
-// });
-// correct.addEventListener("click", function(){
-//     questionOne.setAttribute("style", "display: none;");
-//     questionTwo.setAttribute("style", "display: content;");
-// });
-
-
-// This isn't working...
-// correctTwo.addEventListener("click", function(){
-//     questionOne.setAttribute("style", "display:none");
-//     questionTwo.setAttribute("style", "display: none;");
-//     questionThree.setAttribute("style", "display: content;");
-// });
