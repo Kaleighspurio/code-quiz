@@ -31,27 +31,15 @@ var questionArray = [
     }
 ];
 
-
-// Function for incorrect guesses to deduct seconds and display "Wrong!"
-function wrongAnswer() {
-    // subtract time from the timer
-    // This subtract 20 doesn't work!!!! FIX MEEEEE
-    // var secondsLeft = document.querySelector(".time-remaining");
-    // secondsLeft - 20;
-    // timer.textContent = secondsLeft;
-    answerFeedback.textContent = "Wrong!";
-}
-var secondsLeft = 60
+var secondsLeft = 40
 function setTime() {
     var timeInterval = setInterval(function () {
         secondsLeft--;
         timer.textContent = secondsLeft;
 
-        if (secondsLeft === 0) {
+        if (secondsLeft <= 0) {
             clearInterval(timeInterval);
-            // alert("game over");
-            // store the time left on the timer
-            // make it take you to the highscores page- get the score from local storage
+            endGame();
         }
     }, 1000);
 }
@@ -75,14 +63,13 @@ function displayQuestions() {
     $("#button3").text(questionArray[i].choices[3])
     console.log(questionArray[i].choices);
     i++;
-    if (i === 5) {
-        endGame();
-    }
-    
 }
 
 function endGame() {
     $(".question-box").hide();
+    $(".name-input").show();
+    // store the time left on the timer
+    // make it take you to the highscores page- get the score from local storage
 }
 
 function checkAnswer(){
@@ -95,12 +82,50 @@ function checkAnswer(){
         $(".right-or-wrong").text("Correct!");
     } else {
         $(".right-or-wrong").text("Wrong!");
+        if (secondsLeft > 10){
+            secondsLeft = secondsLeft - 10;
+        } else {
+            secondsLeft = 1;
+        }
     }
     setTimeout(function(){
         $(".right-or-wrong").hide();
     }, 1000);
-    displayQuestions();
+    if (i == 4) {
+        endGame();
+    } else {
+        displayQuestions();
+    }
+    
 }
 $(".buttons").on("click", checkAnswer);
+
+var nameInput = $(".input-box").value;
+
+function getScoresFromLocalStorage(){
+    var scores = localStorage.getItem("scores");
+    if (scores){
+        return JSON.parse(scores);
+    } else {
+        return [];
+    }
+}
+
+function saveScore(secondsLeft){
+    var scoreObject = {
+        name: nameInput,
+        score: secondsLeft
+    }
+    console.log(scoreObject);
+
+    var scores = getScoresFromLocalStorage();
+    scores.push(scoreObject);
+    var scoresJSON = JSON.stringify(scores);
+    localStorage.setItem("scores", scoresJSON);
+}
+
+// What is still needed:
+//  subtract time when wrong answer is clicked
+// 
 
 
