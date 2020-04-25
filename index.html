@@ -13,6 +13,7 @@
         <a href="highscores.html" class="high-scores">View highscores</a>
         <p class="timer">Time left: <span class="time-remaining">60</span></p>
     </header> 
+
     <main class="container instructions-panel" style="display: contents;">
         <div class="row">
             <aside class="col-2"></aside>
@@ -25,17 +26,16 @@
         
     </main>
 
-<!-- display none will keep it from displaying on the page -->
     <main class="container question-one" style="display: none;">
         <div class="row">
             <aside class="col-2"></aside>
-            <div class="col-8 main">
+            <div class="col-8 main question-box">
                 <p class="questions-display"></p>
                 <div class="btn-group-vertical buttons">
-                    <button type="button" class="btn btn-info option1" id="button1"></button>
-                    <button type="button" class="btn btn-info option2"></button>
-                    <button type="button" class="btn btn-info option3"></button>
-                    <button type="button" class="btn btn-info option4"></button>
+                    <button type="button" data-index=0 class="btn btn-info option" id="button0"></button>
+                    <button type="button" data-index=1 class="btn btn-info option" id="button1"></button>
+                    <button type="button" data-index=2 class="btn btn-info option" id="button2"></button>
+                    <button type="button" data-index=3 class="btn btn-info option" id="button3"></button>
                 </div>
                 <p><span class="right-or-wrong"></span></p>
             </div>
