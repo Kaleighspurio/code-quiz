@@ -1,5 +1,3 @@
-// to make different questions appear I can set attribute from display:none to display:content... I think
-
 var startButton = document.querySelector(".start-button");
 var instructions = document.querySelector(".instructions-panel");
 var questionOne = document.querySelector(".question-one");
@@ -10,7 +8,7 @@ var scores;
 var nameInput;
 var secondsLeft;
 
-// Have an array of all questions, choices and the correct answer
+// Have an array of all questions, choices, and the correct answer
 
 var questionArray = [
     {
@@ -34,13 +32,13 @@ var questionArray = [
         correct: 2
     }
 ];
-
+// set the seconds to start at 40
 secondsLeft = 40
 function setTime() {
     timeInterval = setInterval(function () {
         secondsLeft--;
         timer.textContent = secondsLeft;
-
+// when the timer reaches 0, go to the end of the game
         if (secondsLeft <= 0) {
             clearInterval(timeInterval);
             endGame();
@@ -57,7 +55,7 @@ startButton.addEventListener("click", function () {
     displayQuestions();
 
 });
-
+// display the questions from the array one at a time, and their corresponding answers populate each button on the page.  After each question is asked and answered, it moves to the next question with the i++
 function displayQuestions() {
     $(".questions-display").text(questionArray[i].question);
     $("#button0").text(questionArray[i].choices[0])
@@ -67,7 +65,7 @@ function displayQuestions() {
     console.log(questionArray[i].choices);
     i++;
 }
-
+// The endGame function hides the question box, and shows the score and the name input box with a submit button
 function endGame() {
     $(".question-box").hide();
     $(".name-input").show();
@@ -76,6 +74,7 @@ function endGame() {
     $(".time-remaining").text(timeInterval);
 }
 
+// The checkAnswer function will take the data-index from the button that was clicked and compare it to the correct item in the questionArray object.  If the data-index matches the correct answer, "correct!" will appear, if not, "wrong!" will appear and 10 seconds will be deducted. 
 function checkAnswer(){
     $(".right-or-wrong").show();
     var buttonClicked = event.target;
@@ -92,7 +91,7 @@ function checkAnswer(){
             secondsLeft = 0;
         }
     }
-    // This displays whether the question was right or wrong and it disappears after 1 second
+    // This makes the display of whether the question was right or wrong disappear after 1 second
     setTimeout(function(){
         $(".right-or-wrong").hide();
     }, 1000);
@@ -103,11 +102,13 @@ function checkAnswer(){
     }
     
 }
+// when an answer button is clicked, the checkAnswer function is run
 $(".buttons").on("click", checkAnswer);
+// When the submit button is clicked, the saveScore function is run
 $(".submit-button").on("click", saveScore);
 
 
-
+// This will take any scores already stored in local storage and will JSON.parse them
 function getScoresFromLocalStorage(){
     scores = localStorage.getItem("scores");
     if (scores){
@@ -117,9 +118,9 @@ function getScoresFromLocalStorage(){
     }
 }
 
+// The saveScore function will take the name from the input box and the user's score and push the new scores into the scoreObject.  Then it will JSON stringify it and store it back in local storage
 function saveScore(seconds){
     nameInput = $(".input-box").val();
-
     console.log(nameInput);
     var scoreObject = {
         name: nameInput,
@@ -131,6 +132,5 @@ function saveScore(seconds){
     scores.push(scoreObject);
     var scoresJSON = JSON.stringify(scores);
     localStorage.setItem("scores", scoresJSON);
-    // viewScores();
 }
 

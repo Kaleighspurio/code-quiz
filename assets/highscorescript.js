@@ -1,22 +1,7 @@
-// viewScores();
 
-// function getScoresFromLocalStorage(){
-//     var highscores = localStorage.getItem("scores");
-//     if (highscores){
-//         return JSON.parse(highscores);
-//     } else {
-//         return [];
-//     }
-// }
-
-// function viewScores(){
-//     var highscores = getScoresFromLocalStorage();
-//     console.log(highscores);
-//     $("#score-list").html(highscores.name);
-
-// }
 displayHighScores();
 
+// the displayHighScores function gets the scores from local storage and JSON.parse's them.  Then it stores the high scores onto a table
 function displayHighScores(){
     var showHighScore = JSON.parse(localStorage.getItem("scores"));
     console.log(showHighScore);
@@ -36,11 +21,8 @@ function displayHighScores(){
     }
 }
 
-
+// When the clear highscores button is clicked, the local storage is cleared and the displayHighScores function is run, to display the empty scores table.
 $(".clear-scores").on("click", function(){
     localStorage.clear();
     displayHighScores();
 });
-
-
-// console.log(tableRowElement);
