@@ -127,7 +127,6 @@ function saveScore(seconds){
         score: secondsLeft
     }
     console.log(scoreObject);
-
     var scores = getScoresFromLocalStorage();
     scores.push(scoreObject);
     var scoresJSON = JSON.stringify(scores);

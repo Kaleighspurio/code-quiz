@@ -2,6 +2,7 @@ body {
     padding: 10px;
     background-image: url("https://images-na.ssl-images-amazon.com/images/I/71nsk6vUTlL._AC_SL1470_.jpg");
     background-size: cover;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 h1 {
@@ -14,6 +15,7 @@ h1 {
 .high-scores {
     float: left;
     color: gold;
+    font-size: 30px;
 }
 
 .high-scores:hover {
@@ -22,7 +24,8 @@ h1 {
 
 .timer {
     float: right;
-    color: yellow;
+    color: gold;
+    font-size: 30px;
 }
 
 .container {
@@ -37,10 +40,12 @@ h1 {
     background-color: darkgoldenrod;
     color:white;
     text-align: center;
+    font-size:  25px;
 }
 
 .btn {
     margin: 14px;
+    font-size: 20px;
     
 }
 
