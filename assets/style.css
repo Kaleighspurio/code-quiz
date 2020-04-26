@@ -35,6 +35,7 @@ h1 {
     padding: 30px 30px 10px 30px;
     background-color: darkgoldenrod;
     color:white;
+    text-align: center;
 }
 
 .btn {
@@ -43,11 +44,17 @@ h1 {
 }
 
 .highscore-div {
-    width: 50%;
+    width: 40%;
     margin: 0 auto;
     min-height: 300px;
 }
 
 table {
     width: 100%;
+}
+
+table thead {
+    color: black;
+    font-size: larger;
+    text-decoration: underline;
 }
