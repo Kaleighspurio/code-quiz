@@ -7,6 +7,8 @@ var timer = document.querySelector(".time-remaining");
 var i = 0;
 var timeInterval;
 var scores;
+var nameInput;
+var secondsLeft;
 
 // Have an array of all questions, choices and the correct answer
 
@@ -33,7 +35,7 @@ var questionArray = [
     }
 ];
 
-var secondsLeft = 40
+secondsLeft = 40
 function setTime() {
     timeInterval = setInterval(function () {
         secondsLeft--;
@@ -48,7 +50,6 @@ function setTime() {
 
 // When the start button is clicked, start the timer
 startButton.addEventListener("click", function () {
-
     setTime();
     // instructions disappear and the first question displayed
     instructions.setAttribute("style", "display: none;");
@@ -88,7 +89,7 @@ function checkAnswer(){
         if (secondsLeft > 10){
             secondsLeft = secondsLeft - 10;
         } else {
-            secondsLeft = 1;
+            secondsLeft = 0;
         }
     }
     // This displays whether the question was right or wrong and it disappears after 1 second
@@ -117,7 +118,7 @@ function getScoresFromLocalStorage(){
 }
 
 function saveScore(seconds){
-    var nameInput = $(".input-box").val();
+    nameInput = $(".input-box").val();
 
     console.log(nameInput);
     var scoreObject = {
@@ -130,10 +131,6 @@ function saveScore(seconds){
     scores.push(scoreObject);
     var scoresJSON = JSON.stringify(scores);
     localStorage.setItem("scores", scoresJSON);
+    // viewScores();
 }
-
-// What is still needed:
-//  subtract time when wrong answer is clicked
-// 
-
 
