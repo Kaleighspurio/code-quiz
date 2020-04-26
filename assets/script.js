@@ -5,6 +5,8 @@ var instructions = document.querySelector(".instructions-panel");
 var questionOne = document.querySelector(".question-one");
 var timer = document.querySelector(".time-remaining");
 var i = 0;
+var timeInterval;
+var scores;
 
 // Have an array of all questions, choices and the correct answer
 
@@ -33,7 +35,7 @@ var questionArray = [
 
 var secondsLeft = 40
 function setTime() {
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
         secondsLeft--;
         timer.textContent = secondsLeft;
 
@@ -68,8 +70,9 @@ function displayQuestions() {
 function endGame() {
     $(".question-box").hide();
     $(".name-input").show();
-    // store the time left on the timer
-    // make it take you to the highscores page- get the score from local storage
+    $(".display-score").text(secondsLeft);
+    clearInterval(timeInterval);
+    $(".time-remaining").text(timeInterval);
 }
 
 function checkAnswer(){
@@ -88,6 +91,7 @@ function checkAnswer(){
             secondsLeft = 1;
         }
     }
+    // This displays whether the question was right or wrong and it disappears after 1 second
     setTimeout(function(){
         $(".right-or-wrong").hide();
     }, 1000);
@@ -99,11 +103,12 @@ function checkAnswer(){
     
 }
 $(".buttons").on("click", checkAnswer);
+$(".submit-button").on("click", saveScore);
 
-var nameInput = $(".input-box").value;
+
 
 function getScoresFromLocalStorage(){
-    var scores = localStorage.getItem("scores");
+    scores = localStorage.getItem("scores");
     if (scores){
         return JSON.parse(scores);
     } else {
@@ -111,7 +116,10 @@ function getScoresFromLocalStorage(){
     }
 }
 
-function saveScore(secondsLeft){
+function saveScore(seconds){
+    var nameInput = $(".input-box").val();
+
+    console.log(nameInput);
     var scoreObject = {
         name: nameInput,
         score: secondsLeft
