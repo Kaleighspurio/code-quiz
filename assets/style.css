@@ -1,19 +1,27 @@
 body {
     padding: 10px;
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/71nsk6vUTlL._AC_SL1470_.jpg");
+    background-size: cover;
 }
 
 h1 {
-    color: black;
+    color: gold;
     text-align: center;
-    border-bottom: 2px ridge black;
+    border-bottom: 2px ridge gold;
 }
 
 .high-scores {
     float: left;
+    color: gold;
+}
+
+.high-scores:hover {
+    color: pink;
 }
 
 .timer {
     float: right;
+    color: yellow;
 }
 
 .container {
@@ -23,9 +31,23 @@ h1 {
 
 .main {
     border: dashed 1px black;
-    margin-top: 50px;
+    margin-top: 100px;
+    padding: 30px 30px 10px 30px;
+    background-color: darkgoldenrod;
+    color:white;
 }
 
 .btn {
-    margin: 4px;
+    margin: 14px;
+    
+}
+
+.highscore-div {
+    width: 50%;
+    margin: 0 auto;
+    min-height: 300px;
+}
+
+table {
+    width: 100%;
 }
