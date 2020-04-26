@@ -15,7 +15,7 @@ var secondsLeft;
 var questionArray = [
     {
         question: "Who is the Gryffindor house ghost?",
-        choices: ["the Bloody Baron", "Peeves", "The grey lady", "Nearly Headless Nick"],
+        choices: ["The Bloody Baron", "Peeves", "The Grey Lady", "Nearly Headless Nick"],
         correct: 3
     },
     {

@@ -8,6 +8,7 @@ h1 {
     color: gold;
     text-align: center;
     border-bottom: 2px ridge gold;
+    padding-bottom: 20px;
 }
 
 .high-scores {
@@ -30,7 +31,7 @@ h1 {
 }
 
 .main {
-    border: dashed 1px black;
+    border: ridge 3px gold;
     margin-top: 100px;
     padding: 30px 30px 10px 30px;
     background-color: darkgoldenrod;
