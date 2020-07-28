@@ -1,16 +1,15 @@
-var startButton = document.querySelector(".start-button");
-var instructions = document.querySelector(".instructions-panel");
-var questionOne = document.querySelector(".question-one");
-var timer = document.querySelector(".time-remaining");
-var i = 0;
-var timeInterval;
-var scores;
-var nameInput;
-var secondsLeft;
+const startButton = document.querySelector(".start-button");
+const instructions = document.querySelector(".instructions-panel");
+const questionOne = document.querySelector(".question-one");
+const timer = document.querySelector(".time-remaining");
+let i = 0;
+let timeInterval;
+let scores;
+let nameInput;
 
 // Have an array of all questions, choices, and the correct answer
 
-var questionArray = [
+const questionArray = [
     {
         question: "Who is the Gryffindor house ghost?",
         choices: ["The Bloody Baron", "Peeves", "The Grey Lady", "Nearly Headless Nick"],
@@ -33,9 +32,9 @@ var questionArray = [
     }
 ];
 // set the seconds to start at 40
-secondsLeft = 40
-function setTime() {
-    timeInterval = setInterval(function () {
+let secondsLeft = 40;
+const setTime = () => {
+    timeInterval = setInterval(() => {
         secondsLeft--;
         timer.textContent = secondsLeft;
 // when the timer reaches 0, go to the end of the game
@@ -56,7 +55,7 @@ startButton.addEventListener("click", function () {
 
 });
 // display the questions from the array one at a time, and their corresponding answers populate each button on the page.  After each question is asked and answered, it moves to the next question with the i++
-function displayQuestions() {
+const displayQuestions = () => {
     $(".questions-display").text(questionArray[i].question);
     $("#button0").text(questionArray[i].choices[0])
     $("#button1").text(questionArray[i].choices[1])
@@ -66,7 +65,7 @@ function displayQuestions() {
     i++;
 }
 // The endGame function hides the question box, and shows the score and the name input box with a submit button
-function endGame() {
+const endGame = () => {
     $(".question-box").hide();
     $(".name-input").show();
     $(".display-score").text(secondsLeft);
@@ -75,7 +74,7 @@ function endGame() {
 }
 
 // The checkAnswer function will take the data-index from the button that was clicked and compare it to the correct item in the questionArray object.  If the data-index matches the correct answer, "correct!" will appear, if not, "wrong!" will appear and 10 seconds will be deducted. 
-function checkAnswer(){
+const checkAnswer = () => {
     $(".right-or-wrong").show();
     var buttonClicked = event.target;
     var chosenAnswerIndex = buttonClicked.getAttribute("data-index");
@@ -92,7 +91,7 @@ function checkAnswer(){
         }
     }
     // This makes the display of whether the question was right or wrong disappear after 1 second
-    setTimeout(function(){
+    setTimeout(() => {
         $(".right-or-wrong").hide();
     }, 1000);
     if (i == 4) {
@@ -102,14 +101,10 @@ function checkAnswer(){
     }
     
 }
-// when an answer button is clicked, the checkAnswer function is run
-$(".buttons").on("click", checkAnswer);
-// When the submit button is clicked, the saveScore function is run
-$(".submit-button").on("click", saveScore);
 
 
 // This will take any scores already stored in local storage and will JSON.parse them
-function getScoresFromLocalStorage(){
+const getScoresFromLocalStorage = () => {
     scores = localStorage.getItem("scores");
     if (scores){
         return JSON.parse(scores);
@@ -119,17 +114,21 @@ function getScoresFromLocalStorage(){
 }
 
 // The saveScore function will take the name from the input box and the user's score and push the new scores into the scoreObject.  Then it will JSON stringify it and store it back in local storage
-function saveScore(seconds){
+const saveScore = (seconds) => {
     nameInput = $(".input-box").val();
     console.log(nameInput);
-    var scoreObject = {
+    const scoreObject = {
         name: nameInput,
         score: secondsLeft
     }
     console.log(scoreObject);
-    var scores = getScoresFromLocalStorage();
+    const scores = getScoresFromLocalStorage();
     scores.push(scoreObject);
-    var scoresJSON = JSON.stringify(scores);
+    const scoresJSON = JSON.stringify(scores);
     localStorage.setItem("scores", scoresJSON);
 }
 
+// when an answer button is clicked, the checkAnswer function is run
+$(".buttons").on("click", checkAnswer);
+// When the submit button is clicked, the saveScore function is run
+$(".submit-button").on("click", saveScore);
