@@ -135,9 +135,7 @@ const checkAnswer = () => {
     } else {
         displayQuestions();
     }
-    
 }
-
 
 // This will take any scores already stored in local storage and will JSON.parse them
 const getScoresFromLocalStorage = () => {
@@ -150,9 +148,7 @@ const getScoresFromLocalStorage = () => {
 }
 
 // The saveScore function will take the name from the input box and the user's score and push the new scores into the scoreObject.  Then it will JSON stringify it and store it back in local storage
-const saveScore = (seconds) => {
-    nameInput = $(".input-box").val();
-    console.log(nameInput);
+const saveScore = () => {
     const scoreObject = {
         name: nameInput,
         score: secondsLeft
@@ -162,9 +158,20 @@ const saveScore = (seconds) => {
     scores.push(scoreObject);
     const scoresJSON = JSON.stringify(scores);
     localStorage.setItem("scores", scoresJSON);
+    window.location.href = "highscores.html"
+}
+
+// This checks that a name has been entered into the highscores, and if so, calls the saveScore function
+const verifyName = () => {
+    nameInput = $(".input-box").val();
+    if (!nameInput || nameInput === "") {
+        alert("Please enter your name");
+    } else {
+        saveScore();
+    }
 }
 
 // when an answer button is clicked, the checkAnswer function is run
 $(".buttons").on("click", checkAnswer);
 // When the submit button is clicked, the saveScore function is run
-$(".submit-button").on("click", saveScore);
+$(".submit-button").on("click", verifyName);
