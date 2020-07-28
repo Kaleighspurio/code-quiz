@@ -29,10 +29,45 @@ const questionArray = [
         question: "How did Moaning Myrtle die?",
         choices: ["A mountain troll", "The Whomping Willow", "The Basilisk", "The Killing Curse"],
         correct: 2
+    },
+    {
+        question: "What position does Harry play in Quidditch?",
+        choices: ["Seeker", "Keeper", "Chaser", "Bludger"],
+        correct: 0
+    },
+    {
+        question: "What does the Imperious Curse do?",
+        choices: ["Kills", "Tortures", "Controls", "Gives the person a pig tail"],
+        correct: 2
+    },
+    {
+        question: "Who is Grawp?",
+        choices: ["Hagrid's half brother", "Ron's owl", "A centaur", "Sirius' house elf"],
+        correct: 0
+    },
+    {
+        question: "How is Dobby freed from the Malfoys?",
+        choices: ["A pair of pants", "A sock", "A spell", "A potion"],
+        correct: 1
+    },
+    {
+        question: "What type of dragon does Harry face in his Tri-Wizard Tournament task?",
+        choices: ["A Chinese Fireball", "A Swedish Short-Snout", "A Common Welsh Green", "A Hungarian Horntail"],
+        correct: 3
+    },
+    {
+        question: "Who is Harry's fifth year Defense Against the Dark Arts teacher?",
+        choices: ["Mad Eye Moody", "Remus Lupin", "Severus Snape", "Dolores Umbridge"],
+        correct: 3
+    },
+    {
+        question: "Who is the Half Blood Prince?",
+        choices: ["Tom Riddle", "Harry Potter", "Severus Snape", "Draco Malfoy"],
+        correct: 2
     }
 ];
 // set the seconds to start at 40
-let secondsLeft = 40;
+let secondsLeft = 80;
 const setTime = () => {
     timeInterval = setInterval(() => {
         secondsLeft--;
@@ -46,7 +81,7 @@ const setTime = () => {
 }
 
 // When the start button is clicked, start the timer
-startButton.addEventListener("click", function () {
+startButton.addEventListener("click", () => {
     setTime();
     // instructions disappear and the first question displayed
     instructions.setAttribute("style", "display: none;");
@@ -76,8 +111,8 @@ const endGame = () => {
 // The checkAnswer function will take the data-index from the button that was clicked and compare it to the correct item in the questionArray object.  If the data-index matches the correct answer, "correct!" will appear, if not, "wrong!" will appear and 10 seconds will be deducted. 
 const checkAnswer = () => {
     $(".right-or-wrong").show();
-    var buttonClicked = event.target;
-    var chosenAnswerIndex = buttonClicked.getAttribute("data-index");
+    let buttonClicked = event.target;
+    let chosenAnswerIndex = buttonClicked.getAttribute("data-index");
     console.log(chosenAnswerIndex);
     console.log("correct answer is " + questionArray[i-1].choices);
     if (chosenAnswerIndex == questionArray[i-1].correct){
@@ -88,13 +123,14 @@ const checkAnswer = () => {
             secondsLeft = secondsLeft - 10;
         } else {
             secondsLeft = 0;
+            endGame();
         }
     }
-    // This makes the display of whether the question was right or wrong disappear after 1 second
+    // This makes the display of whether the question was right or wrong disappear after 1 second.  Once all questions have been asked, it calls the endGame function
     setTimeout(() => {
         $(".right-or-wrong").hide();
     }, 1000);
-    if (i == 4) {
+    if (i == 11) {
         endGame();
     } else {
         displayQuestions();
