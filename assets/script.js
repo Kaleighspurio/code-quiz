@@ -70,7 +70,7 @@ const endGame = () => {
     $(".name-input").show();
     $(".display-score").text(secondsLeft);
     clearInterval(timeInterval);
-    $(".time-remaining").text(timeInterval);
+    $(".time-remaining").text(secondsLeft);
 }
 
 // The checkAnswer function will take the data-index from the button that was clicked and compare it to the correct item in the questionArray object.  If the data-index matches the correct answer, "correct!" will appear, if not, "wrong!" will appear and 10 seconds will be deducted. 
